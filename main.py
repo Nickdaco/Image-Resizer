@@ -9,14 +9,14 @@ x_input = input('Input image X size: ')
 y_input = input('Input image Y size: ')
 
 
-def resizeImage(xNum, yNum):
+def resize_image(x_num, y_num):
     os.chdir(input_path)
 
     print("Resizing Images...")
 
     # Enter folder and separate extensions
     for filename in os.listdir(input_path):
-        fileSplit = filename.split(".")
+        file_split = filename.split(".")
 
         # Find compatible extensions and navigate into directory
         if filename.endswith('.jpg') or filename.endswith('.png'):
@@ -25,10 +25,9 @@ def resizeImage(xNum, yNum):
             # Resize the image and save in output folder
             with open(filename, 'r+b') as f:
                 with Image.open(f) as image:
-                    cover = resizeimage.resize_cover(image, [xNum, yNum])
+                    cover = resizeimage.resize_cover(image, [x_num, y_num])
                     os.chdir(output_path)
-                    cover.save(fileSplit[0] + '.png', image.format)
+                    cover.save(file_split[0] + '.png', image.format)
 
 
-
-resizeImage(int(x_input), int(y_input))
+resize_image(int(x_input), int(y_input))
